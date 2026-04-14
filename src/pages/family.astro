@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+
+const family = [
+  {
+    name: 'Jordi',
+    surname: 'Murgó',
+    aka: 'Savage',
+    role: 'Father / Hacker / AI Specialist',
+    domain: 'murgo.org',
+    desc: 'The OG. Early Catalan hacker, security researcher, AI specialist at GFT.',
+    status: 'active'
+  },
+  {
+    name: 'Eva',
+    surname: 'Hernández',
+    role: 'Partner',
+    domain: null,
+    desc: "Jordi's partner.",
+    status: 'private'
+  },
+  {
+    name: 'Roger',
+    surname: 'Murgó',
+    role: 'Son',
+    domain: 'roger.murgo.org (pending)',
+    desc: 'Married to Sara, lives in Barcelona.',
+    status: 'pending'
+  },
+  {
+    name: 'Gerard',
+    surname: 'Murgó',
+    role: 'Son',
+    domain: 'gerard.murgo.org (pending)',
+    desc: 'Jordi\'s son.',
+    status: 'pending'
+  },
+  {
+    name: 'Héctor',
+    surname: 'Hernández',
+    role: 'Eva\'s son',
+    domain: 'hernandez.murgo.org (pending)',
+    desc: 'Married to Carmen, lives in Barcelona.',
+    status: 'pending'
+  },
+  {
+    name: 'Edu',
+    surname: 'Hernández',
+    role: 'Eva\'s son',
+    domain: 'edu.murgo.org (pending)',
+    desc: 'Dating Mireia.',
+    status: 'pending'
+  }
+];
+---
+
+<Base title="Family | Murgo.org">
+  <section class="family-hero">
+    <div class="container">
+      <h1>The Murgo Family</h1>
+      <p>And the extended Hernandez clan. Digital presence under one domain.</p>
+    </div>
+  </section>
+
+  <section class="family-grid-section">
+    <div class="container">
+      <div class="family-grid">
+        {family.map((member) => (
+          <div class={`family-card ${member.status}`}>
+            <div class="family-avatar">
+              {member.name[0]}
+            </div>
+            <div class="family-info">
+              <h3>{member.name} {member.surname}</h3>
+              <span class="family-role">{member.role}</span>
+              {member.aka && <span class="family-aka">aka "{member.aka}"</span>}
+              <p>{member.desc}</p>
+              {member.domain && member.status === 'active' ? (
+                <a href={`https://${member.domain}`} class="family-domain active" target="_blank">
+                  {member.domain} →
+                </a>
+              ) : member.domain && member.status === 'pending' ? (
+                <span class="family-domain pending">{member.domain}</span>
+              ) : (
+                <span class="family-domain private">Private</span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="family-note">
+    <div class="container">
+      <div class="note-card">
+        <h3>🏠 Family Digital Hub</h3>
+        <p>
+          Murgo.org aims to provide each family member with their own subdomain 
+          for personal sites, portfolios, or projects. Contact Jordi to set up yours!
+        </p>
+        <a href="mailto:jordi.murgo@gmail.com" class="btn btn-primary">Get Your Subdomain</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .family-hero {
+    padding: 4rem 0 2rem;
+    text-align: center;
+  }
+
+  .family-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .family-hero p {
+    color: var(--text-secondary);
+  }
+
+  .family-grid-section {
+    padding: 2rem 0 4rem;
+  }
+
+  .family-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .family-card {
+    display: flex;
+    gap: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .family-card.active {
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .family-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-blue);
+    flex-shrink: 0;
+  }
+
+  .family-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .family-role {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .family-aka {
+    color: var(--accent-purple);
+    font-size: 0.8rem;
+    font-style: italic;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .family-info p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .family-domain {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+
+  .family-domain.active {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+  }
+
+  .family-domain.active:hover {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  .family-domain.pending {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+  }
+
+  .family-domain.private {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+  }
+
+  .family-note {
+    padding: 2rem 0;
+  }
+
+  .note-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .note-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .note-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: var(--accent-blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #2563eb;
+  }
+</style>

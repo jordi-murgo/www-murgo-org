@@ -1,0 +1,67 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Murgo.org - Savage Software Hub | Technology, Security, AI, and the Apostols tool archive' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">murgo<span class="logo-dot">.</span>org</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/savage">Savage</a>
+        <a href="/tools">Tools</a>
+        <a href="/blog">Blog</a>
+        <a href="/agents">Agents</a>
+        <a href="/projects">Projects</a>
+        <a href="/family">Family</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span> murgo.org
+      </div>
+      <div class="footer-links">
+        <a href="https://savagesoftware.dev" target="_blank">Savage Software</a>
+        <a href="/blog">Blog</a>
+        <a href="/agents">Agents</a>
+        <a href="/tools">Tools Museum</a>
+        <a href="https://apostols.org" target="_blank">Apòstols</a>
+        <a href="https://cyberlab.biz" target="_blank">CyberLab</a>
+      </div>
+      <div class="footer-copy">
+        &copy; {new Date().getFullYear()} Murgo Family. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,357 @@
+---
+import Base from '../layouts/Base.astro';
+
+const posts = [
+  {
+    slug: 'ai-agents-virtual-company',
+    title: 'Running a Virtual Company with AI Agents',
+    date: '2026-04-10',
+    tags: ['AI', 'Paperclip', 'Agents'],
+    excerpt: 'How Paperclip orchestrates a team of specialized AI agents — CodeBot, CyberBot, and Minion — to build and maintain the Savage Software hub autonomously.',
+    readMin: 6
+  },
+  {
+    slug: 'queso-os-fingerprinting-revisited',
+    title: 'QueSO: OS Fingerprinting Revisited in 2025',
+    date: '2025-11-18',
+    tags: ['Security', 'History', 'Tools'],
+    excerpt: 'Twenty-seven years after QueSO shipped, the same malformed-packet approach lives inside modern scanners. A look at what changed and what did not.',
+    readMin: 9
+  },
+  {
+    slug: 'neped-promiscuous-detection-story',
+    title: 'NePED and the Problem of Hidden Sniffers',
+    date: '2025-09-04',
+    tags: ['Security', 'History', 'Networking'],
+    excerpt: 'Crafting ARP frames addressed to impossible MACs — the technique behind NePED, and why promiscuous-mode detection is still relevant in containerised networks.',
+    readMin: 7
+  },
+  {
+    slug: 'apostols-era-tools-archive',
+    title: 'Opening the Apostols Archive',
+    date: '2025-07-22',
+    tags: ['History', 'Archive', 'Apostols'],
+    excerpt: 'Why preserving the original source files matters more than polished retrospectives. Primary material over biography.',
+    readMin: 5
+  },
+  {
+    slug: 'prompt-injection-practical-guide',
+    title: 'Prompt Injection: A Practitioner\'s Field Guide',
+    date: '2025-05-15',
+    tags: ['AI', 'Security', 'Research'],
+    excerpt: 'Direct, indirect, and compositional prompt injection in production LLM systems. Patterns, mitigations, and the threat model that actually matters.',
+    readMin: 12
+  },
+  {
+    slug: 'msx-bbdotbas-bluebox',
+    title: 'BB.BAS: Building a BlueBox on MSX BASIC',
+    date: '2025-03-01',
+    tags: ['History', 'Phreaking', 'MSX'],
+    excerpt: 'The PSG formula INT(111861/Hz) maps target frequency to AY-3-8910 register values. How the MSX BlueBox worked from the silicon up.',
+    readMin: 8
+  }
+];
+
+const tagColors: Record<string, string> = {
+  'AI': 'var(--accent-blue)',
+  'Paperclip': 'var(--accent-purple)',
+  'Agents': 'var(--accent-purple)',
+  'Security': 'var(--accent-orange)',
+  'History': 'var(--text-secondary)',
+  'Tools': 'var(--accent-green)',
+  'Archive': 'var(--accent-green)',
+  'Apostols': 'var(--accent-blue)',
+  'Research': 'var(--accent-orange)',
+  'Networking': 'var(--accent-green)',
+  'Phreaking': 'var(--accent-orange)',
+  'MSX': 'var(--text-secondary)',
+};
+
+function tagColor(tag: string) {
+  return tagColors[tag] ?? 'var(--text-muted)';
+}
+
+const featured = posts[0];
+const rest = posts.slice(1);
+---
+
+<Base
+  title="Blog — Murgo.org"
+  description="Writing on AI agents, cybersecurity, hacking history, and the Apostols archive. By Jordi Murgó."
+>
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-header">
+        <div class="blog-badge">Field Notes</div>
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-subtitle">
+          Writing on AI agents, security research, and a few decades of hacker history.
+          Primary sources and working code preferred.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <!-- Featured post -->
+      <div class="featured-wrapper">
+        <span class="featured-label">Latest</span>
+        <article class="featured-card">
+          <div class="featured-meta">
+            <time>{featured.date}</time>
+            <span class="dot">·</span>
+            <span>{featured.readMin} min read</span>
+          </div>
+          <h2 class="featured-title">{featured.title}</h2>
+          <p class="featured-excerpt">{featured.excerpt}</p>
+          <div class="featured-footer">
+            <div class="tag-list">
+              {featured.tags.map(t => (
+                <span class="tag" style={`color: ${tagColor(t)}`}>{t}</span>
+              ))}
+            </div>
+            <a href={`/blog/${featured.slug}`} class="read-link">Read →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Post grid -->
+      <div class="posts-grid">
+        {rest.map(post => (
+          <article class="post-card">
+            <div class="post-meta">
+              <time>{post.date}</time>
+              <span class="dot">·</span>
+              <span>{post.readMin} min</span>
+            </div>
+            <h3 class="post-title">{post.title}</h3>
+            <p class="post-excerpt">{post.excerpt}</p>
+            <div class="post-footer">
+              <div class="tag-list">
+                {post.tags.map(t => (
+                  <span class="tag" style={`color: ${tagColor(t)}`}>{t}</span>
+                ))}
+              </div>
+              <a href={`/blog/${post.slug}`} class="read-link">Read →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="blog-note">
+        <p>
+          Posts are written by Jordi Murgó with drafting assistance from AI agents.
+          Code snippets and technical claims are verified against primary sources.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .blog-hero {
+    padding: 5rem 0 3rem;
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.05) 0%, transparent 100%);
+  }
+
+  .blog-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .blog-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono);
+  }
+
+  .blog-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .blog-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .blog-content {
+    padding: 3rem 0 6rem;
+  }
+
+  /* Featured */
+  .featured-wrapper {
+    margin-bottom: 3rem;
+  }
+
+  .featured-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .featured-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .featured-card:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .dot {
+    color: var(--text-muted);
+  }
+
+  .featured-title {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .featured-excerpt {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  .featured-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Post grid */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .post-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .post-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-muted);
+  }
+
+  .post-title {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .post-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  /* Tags */
+  .tag-list {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.85;
+  }
+
+  .read-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .read-link:hover {
+    color: #60a5fa;
+  }
+
+  /* Note */
+  .blog-note {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    text-align: center;
+  }
+
+  .blog-note p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .featured-title {
+      font-size: 1.35rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

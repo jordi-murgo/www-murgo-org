@@ -1,0 +1,609 @@
+---
+import Base from '../layouts/Base.astro';
+
+const archiveHighlights = [
+  {
+    name: 'BB.BAS',
+    year: '1988',
+    desc: 'BlueBox for MSX with Spanish R2/CCITT tone tables and PSG register control.'
+  },
+  {
+    name: 'NePED',
+    year: '1998',
+    desc: 'Linux promiscuous-mode detector built around raw ARP behavior on local subnets.'
+  },
+  {
+    name: 'QueSO',
+    year: '1998',
+    desc: 'Remote OS fingerprinting through abnormal TCP packet responses.'
+  }
+];
+---
+
+<Base title="Murgo.org - Savage Software Hub">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Technology · Security · AI · Archive</div>
+        <h1 class="hero-title">
+          <span class="hero-icon">◈</span>
+          Murgo<span class="hero-dot">.</span>org
+        </h1>
+        <p class="hero-subtitle">
+          A technology hub operated by AI agents. <br>
+          Home of <strong>Savage Software</strong>, the Murgo family digital presence,
+          and the preserved Apostols tool archive.
+        </p>
+        <div class="hero-ctas">
+          <a href="/savage" class="btn btn-primary">Explore Savage →</a>
+          <a href="/tools" class="btn btn-secondary">Open Tools Museum</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </section>
+
+  <section class="labs-section">
+    <div class="container">
+      <h2 class="section-title">Our Labs</h2>
+      <div class="labs-grid">
+        <a href="https://savagesoftware.dev" target="_blank" class="lab-card">
+          <div class="lab-icon" style="color: var(--accent-green);">⟨savage/⟩</div>
+          <h3>Savage Software</h3>
+          <p>Personal site of Jordi Murgó "Savage" — hacker history, tools, and current work.</p>
+          <span class="lab-link">savagesoftware.dev →</span>
+        </a>
+
+        <a href="https://cyberlab.biz" target="_blank" class="lab-card">
+          <div class="lab-icon" style="color: var(--accent-blue);">🛡️</div>
+          <h3>CyberLab</h3>
+          <p>Advanced cybersecurity research powered by AI agents.</p>
+          <span class="lab-link">cyberlab.biz →</span>
+        </a>
+
+        <a href="https://softlab.live" target="_blank" class="lab-card">
+          <div class="lab-icon" style="color: var(--accent-purple);">🤖</div>
+          <h3>SoftLab</h3>
+          <p>AI agents virtual lab with orchestration demos and experiments.</p>
+          <span class="lab-link">softlab.live →</span>
+        </a>
+
+        <a href="https://democenter.dev" target="_blank" class="lab-card">
+          <div class="lab-icon" style="color: var(--accent-orange);">⚡</div>
+          <h3>DemoCenter</h3>
+          <p>Developer cloud platform with interactive sandboxes.</p>
+          <span class="lab-link">democenter.dev →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="archive-section">
+    <div class="container">
+      <div class="archive-header">
+        <div>
+          <h2 class="section-title archive-title">Tools Museum</h2>
+          <p class="archive-copy">
+            Real source artifacts from the Apostols era, exposed as primary
+            material instead of vague biography.
+          </p>
+        </div>
+        <a href="/tools" class="archive-link">See full archive →</a>
+      </div>
+      <div class="archive-grid">
+        {archiveHighlights.map((tool) => (
+          <article class="archive-card">
+            <p class="archive-year">{tool.year}</p>
+            <h3>{tool.name}</h3>
+            <p>{tool.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-preview-section">
+    <div class="container">
+      <div class="blog-preview-header">
+        <div>
+          <h2 class="section-title blog-preview-title">From the Blog</h2>
+          <p class="blog-preview-copy">
+            Writing on AI agents, cybersecurity research, and four decades of hacker history.
+          </p>
+        </div>
+        <a href="/blog" class="blog-preview-link">All posts →</a>
+      </div>
+      <div class="blog-preview-grid">
+        <a href="/blog/ai-agents-virtual-company" class="blog-preview-card featured-post">
+          <span class="post-badge">Latest</span>
+          <p class="post-date">2026-04-10</p>
+          <h3>Running a Virtual Company with AI Agents</h3>
+          <p class="post-excerpt">How Paperclip orchestrates a team of specialized AI agents to build and maintain the Savage Software hub autonomously.</p>
+          <span class="post-cta">Read →</span>
+        </a>
+        <a href="/blog/queso-os-fingerprinting-revisited" class="blog-preview-card">
+          <p class="post-date">2025-11-18</p>
+          <h3>QueSO: OS Fingerprinting Revisited in 2025</h3>
+          <p class="post-excerpt">Twenty-seven years after QueSO shipped, the same malformed-packet approach lives inside modern scanners.</p>
+          <span class="post-cta">Read →</span>
+        </a>
+        <a href="/blog/prompt-injection-practical-guide" class="blog-preview-card">
+          <p class="post-date">2025-05-15</p>
+          <h3>Prompt Injection: A Practitioner's Field Guide</h3>
+          <p class="post-excerpt">Direct, indirect, and compositional prompt injection in production LLM systems. Patterns that actually matter.</p>
+          <span class="post-cta">Read →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="status-section">
+    <div class="container">
+      <h2 class="section-title">Agents &amp; Paperclip Status</h2>
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-indicator online"></div>
+          <div class="status-info">
+            <h3>Minion</h3>
+            <p>OpenClaw operator — managing the Murgo hub execution queue.</p>
+          </div>
+          <div class="status-meta">
+            <span class="status-badge">Online</span>
+            <span class="status-tasks">Operations</span>
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-indicator online"></div>
+          <div class="status-info">
+            <h3>CodeBot</h3>
+            <p>Senior engineer — building and maintaining the hub stack.</p>
+          </div>
+          <div class="status-meta">
+            <span class="status-badge">Online</span>
+            <span class="status-tasks">Engineering</span>
+          </div>
+        </div>
+        <div class="status-card">
+          <div class="status-indicator standby"></div>
+          <div class="status-info">
+            <h3>CyberBot</h3>
+            <p>Security agent — threat modelling and vuln research.</p>
+          </div>
+          <div class="status-meta">
+            <span class="status-badge standby">Standby</span>
+            <span class="status-tasks">Security</span>
+          </div>
+        </div>
+      </div>
+      <div class="status-footer">
+        <a href="/agents" class="status-more">View full agent dashboard →</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-icon {
+    color: var(--accent-blue);
+    margin-right: 0.5rem;
+  }
+
+  .hero-dot {
+    color: var(--accent-blue);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 760px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-blue);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #2563eb;
+  }
+
+  .btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-blue);
+  }
+
+  .labs-section,
+  .status-section {
+    padding: 5rem 0;
+  }
+
+  .archive-section {
+    padding: 0 0 5rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .lab-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s;
+  }
+
+  .lab-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-4px);
+  }
+
+  .lab-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+  }
+
+  .lab-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .lab-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .lab-link {
+    color: var(--accent-blue);
+    font-size: 0.85rem;
+  }
+
+  .archive-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1.75rem;
+  }
+
+  .archive-title {
+    text-align: left;
+    margin-bottom: 0.75rem;
+  }
+
+  .archive-copy {
+    color: var(--text-secondary);
+    max-width: 620px;
+  }
+
+  .archive-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .archive-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+  }
+
+  .archive-year {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .archive-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .archive-card p:last-child {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* Blog preview */
+  .blog-preview-section {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .blog-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .blog-preview-title {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-preview-copy {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .blog-preview-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .blog-preview-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .blog-preview-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .blog-preview-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+  }
+
+  .featured-post {
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .post-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.25rem;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .blog-preview-card h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .featured-post h3 {
+    font-size: 1.25rem;
+  }
+
+  .post-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .post-cta {
+    color: var(--accent-blue);
+    font-size: 0.82rem;
+    margin-top: auto;
+  }
+
+  /* Status section */
+  .status-section {
+    padding: 5rem 0;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .status-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .status-indicator.online {
+    background: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-green);
+  }
+
+  .status-indicator.standby {
+    background: var(--accent-orange);
+  }
+
+  .status-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .status-info h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .status-info p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .status-meta {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: end;
+    flex-shrink: 0;
+  }
+
+  .status-badge {
+    color: var(--accent-green);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .status-badge.standby {
+    color: var(--accent-orange);
+  }
+
+  .status-tasks {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+  }
+
+  .status-footer {
+    text-align: center;
+  }
+
+  .status-more {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-preview-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .featured-post {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .archive-header,
+    .blog-preview-header {
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .archive-grid,
+    .blog-preview-grid,
+    .status-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-post {
+      grid-column: auto;
+    }
+
+    .status-card {
+      flex-wrap: wrap;
+    }
+
+    .status-meta {
+      margin-left: 0;
+      align-items: start;
+    }
+  }
+</style>

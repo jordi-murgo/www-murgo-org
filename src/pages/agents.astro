@@ -1,0 +1,498 @@
+---
+import Base from '../layouts/Base.astro';
+
+const agents = [
+  {
+    id: 'minion',
+    name: 'Minion',
+    role: 'Operations',
+    emoji: '⚙️',
+    color: 'var(--accent-green)',
+    status: 'online',
+    description: 'OpenClaw operator node. Manages the Murgo hub execution queue, schedules heartbeats, and coordinates the local agent pool.',
+    capabilities: ['Task scheduling', 'Heartbeat orchestration', 'Local execution', 'Queue management'],
+    platform: 'OpenClaw / Paperclip'
+  },
+  {
+    id: 'codebot',
+    name: 'CodeBot',
+    role: 'Engineering',
+    emoji: '⟨/⟩',
+    color: 'var(--accent-blue)',
+    status: 'online',
+    description: 'Senior software engineer. Implements features, fixes bugs, and maintains the murgo.org stack and the Savage Software hub.',
+    capabilities: ['Astro / TypeScript', 'Full-stack dev', 'Git workflows', 'Build validation'],
+    platform: 'Paperclip / Claude'
+  },
+  {
+    id: 'cyberbot',
+    name: 'CyberBot',
+    role: 'Security',
+    emoji: '🛡️',
+    color: 'var(--accent-orange)',
+    status: 'standby',
+    description: 'Security research and analysis agent. Reviews code for vulnerabilities, runs threat-model analysis, and contributes to CyberLab research output.',
+    capabilities: ['Threat modelling', 'Code review', 'Vuln analysis', 'Prompt injection research'],
+    platform: 'Paperclip / Claude'
+  },
+  {
+    id: 'contentbot',
+    name: 'ContentBot',
+    role: 'Content',
+    emoji: '✍️',
+    color: 'var(--accent-purple)',
+    status: 'standby',
+    description: 'Writing and content agent. Drafts blog posts, documentation, and technical write-ups from research notes and primary sources.',
+    capabilities: ['Blog writing', 'Technical docs', 'SEO copy', 'Editing'],
+    platform: 'Paperclip / Claude'
+  }
+];
+
+const statusLabel: Record<string, string> = {
+  online: 'Online',
+  standby: 'Standby',
+  offline: 'Offline'
+};
+
+const stats = [
+  { label: 'Active Agents', value: '4' },
+  { label: 'Tasks Completed', value: '50+' },
+  { label: 'Orchestration', value: 'Paperclip' },
+  { label: 'Uptime', value: '99%' }
+];
+---
+
+<Base
+  title="AI Agents — Murgo.org"
+  description="The AI agent team operating the Savage Software hub. Powered by Paperclip orchestration."
+>
+  <section class="agents-hero">
+    <div class="container">
+      <div class="agents-header">
+        <div class="agents-badge">Powered by Paperclip</div>
+        <h1 class="agents-title">AI Agent Team</h1>
+        <p class="agents-subtitle">
+          The Murgo hub is operated by a team of specialized AI agents coordinated
+          through <a href="https://paperclip.ing" target="_blank" rel="noopener">Paperclip</a>.
+          Each agent holds a defined role, works on assigned tasks, and communicates
+          through a shared issue tracker.
+        </p>
+      </div>
+
+      <div class="stats-row">
+        {stats.map(s => (
+          <div class="stat-card">
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="agents-section">
+    <div class="container">
+      <h2 class="section-title">The Team</h2>
+      <div class="agents-grid">
+        {agents.map(agent => (
+          <article class="agent-card">
+            <div class="agent-header">
+              <div class="agent-icon" style={`color: ${agent.color}`}>{agent.emoji}</div>
+              <div class="agent-info">
+                <h3 class="agent-name">{agent.name}</h3>
+                <span class="agent-role">{agent.role}</span>
+              </div>
+              <div class={`agent-status ${agent.status}`}>
+                <span class="status-dot"></span>
+                {statusLabel[agent.status]}
+              </div>
+            </div>
+            <p class="agent-desc">{agent.description}</p>
+            <div class="agent-caps">
+              {agent.capabilities.map(cap => (
+                <span class="cap-tag">{cap}</span>
+              ))}
+            </div>
+            <div class="agent-platform">
+              <span class="platform-label">Platform:</span>
+              <span class="platform-value">{agent.platform}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="arch-section">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-num">01</div>
+          <h3>Task Created</h3>
+          <p>Work is added as issues in the Paperclip tracker — either by Jordi or by an agent acting as a coordinator.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">02</div>
+          <h3>Agent Assigned</h3>
+          <p>Paperclip routes the task to the right agent based on role and capacity. The agent picks it up on its next heartbeat.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">03</div>
+          <h3>Heartbeat Execution</h3>
+          <p>The agent wakes up in a short execution window, checks its inbox, checks out the task, does the work, and commits.</p>
+        </div>
+        <div class="arch-card">
+          <div class="arch-num">04</div>
+          <h3>Review &amp; Close</h3>
+          <p>Results are posted as comments. Jordi reviews, approves, or sends back. The issue is closed when the work ships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paperclip-section">
+    <div class="container">
+      <div class="paperclip-card">
+        <div class="paperclip-icon">◈</div>
+        <div class="paperclip-body">
+          <h3>Minion is online</h3>
+          <p>
+            The local OpenClaw node is managing the current execution queue.
+            All agents are operating under Paperclip governance — budget-aware,
+            checkout-gated, and traceable to a run ID.
+          </p>
+        </div>
+        <div class="paperclip-status">
+          <span class="status-live">
+            <span class="live-dot"></span>
+            Live
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .agents-hero {
+    padding: 5rem 0 3rem;
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, transparent 100%);
+  }
+
+  .agents-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3rem;
+  }
+
+  .agents-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 20px;
+    font-size: 0.78rem;
+    color: var(--accent-blue);
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono);
+  }
+
+  .agents-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .agents-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .agents-subtitle a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    font-family: var(--font-mono);
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+  }
+
+  /* Agents section */
+  .agents-section {
+    padding: 5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .agent-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .agent-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-3px);
+  }
+
+  .agent-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .agent-icon {
+    font-size: 2rem;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  .agent-info {
+    flex: 1;
+  }
+
+  .agent-name {
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .agent-role {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .agent-status {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  .agent-status.online {
+    color: var(--accent-green);
+  }
+
+  .agent-status.standby {
+    color: var(--accent-orange);
+  }
+
+  .agent-status.offline {
+    color: var(--text-muted);
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .agent-status.online .status-dot {
+    box-shadow: 0 0 6px currentColor;
+  }
+
+  .agent-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .agent-caps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cap-tag {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+  }
+
+  .agent-platform {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  .platform-label {
+    margin-right: 0.4rem;
+  }
+
+  .platform-value {
+    color: var(--text-secondary);
+  }
+
+  /* Architecture */
+  .arch-section {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .arch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .arch-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+  }
+
+  .arch-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  .arch-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .arch-card p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  /* Paperclip live status */
+  .paperclip-section {
+    padding: 4rem 0;
+  }
+
+  .paperclip-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 14px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .paperclip-icon {
+    font-size: 2.5rem;
+    color: var(--accent-green);
+    flex-shrink: 0;
+  }
+
+  .paperclip-body {
+    flex: 1;
+  }
+
+  .paperclip-body h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-green);
+  }
+
+  .paperclip-body p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .paperclip-status {
+    flex-shrink: 0;
+  }
+
+  .status-live {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .live-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  @media (max-width: 768px) {
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .agents-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .paperclip-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
